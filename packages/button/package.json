@@ -1,0 +1,16 @@
+{
+  "name": "lzh-button",
+  "version": "0.0.3",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "del": "rimraf dist"
+  },
+  "keywords": [],
+  "author": "Coder-LLL <1810994778@qq.com>",
+  "license": "MIT",
+  "gitHead": "e3a92d52056b070af4456f0eedf38db159f368fe"
+}

@@ -1,0 +1,170 @@
+@import "../../../../static/var.scss";
+@import "../../../../static/mixins/mixins.scss";
+@import "../../../../static/mixins/_button.scss";
+@import "../../../../static/mixins/utils.scss";
+
+@include b(button) {
+  // 基本样式
+  display: inline-block;
+  line-height: 1;
+  // white-space: nowrap;
+  cursor: pointer;
+  background: $--button-default-background-color;
+  border: $--border-base;
+  border-color: $--button-default-border-color;
+  color: $--button-default-font-color;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: .1s;
+  font-weight: $--button-font-weight;
+
+  // A+B表示选择紧邻在A后面的B元素，且A和B必须拥有相同的父元素，所选到的仅为一个B元素标签。
+  // 在这里表示如果两个按钮挨着，就给一个 左边距
+  &+& {
+    margin-left: 10px;
+  }
+
+  // 设置文字不可选中
+  @include utils-user-select(none);
+  // 设置默认按钮大小 主要是设置 padding
+  @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
+
+  // 鼠标悬浮和获取焦点的时间
+  &:hover,
+  &:focus {
+    color: $--color-primary;
+    border-color: $--color-primary-light-7;
+    background-color: $--color-primary-light-9;
+  }
+
+  // 按钮被按下但是还没松开这段时间
+  &:active {
+    // mix Mix 函数是将两种颜色根据一定的比例混合在一起，生成另一种颜色
+    color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+    border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+    outline: none;
+  }
+
+  /*
+   Firefox 类型为button的元素，即使设置outline，也还是会出现虚线
+   此时要使用Firefox的私有伪元素-moz-focus-inner
+    -moz-focus-inner并不是reset outline，而是设置border
+  */
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  // 
+  & [class*="lzh-icon-"] {
+
+    // 这里 & 表示的就是 icon图标
+    // 当有 icon 和 span 挨着的时候就给 span 一个左边距
+    &+span {
+      margin-left: 5px;
+    }
+  }
+
+  @include when(plain) {
+
+    &:hover,
+    &:focus {
+      background: $--color-white;
+      border-color: $--color-primary;
+      color: $--color-primary;
+    }
+
+    &:active {
+      background: $--color-white;
+      border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+      color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+      outline: none;
+    }
+  }
+
+
+  @include when(disabled) {
+
+    &,
+    &:hover,
+    &:focus {
+      color: $--button-disabled-font-color;
+      cursor: not-allowed;
+      background-image: none;
+      background-color: $--button-disabled-background-color;
+      border-color: $--button-disabled-border-color;
+    }
+
+    &.is-plain {
+
+      &,
+      &:hover,
+      &:focus {
+        background-color: $--color-white;
+        border-color: $--button-disabled-border-color;
+        color: $--button-disabled-font-color;
+      }
+    }
+  }
+
+  @include when(round) {
+    border-radius: 20px;
+    padding: 12px 23px;
+  }
+
+  @include when(circle) {
+    border-radius: 50%;
+    padding: $--button-padding-vertical;
+  }
+
+
+  //修饰符混入 例如 danger info之类
+  @include m(primary) {
+    @include button-variant($--button-primary-font-color, $--button-primary-background-color, $--button-primary-border-color);
+  }
+
+  @include m(success) {
+    @include button-variant($--button-success-font-color, $--button-success-background-color, $--button-success-border-color);
+  }
+
+  @include m(warning) {
+    @include button-variant($--button-warning-font-color, $--button-warning-background-color, $--button-warning-border-color);
+  }
+
+  @include m(danger) {
+    @include button-variant($--button-danger-font-color, $--button-danger-background-color, $--button-danger-border-color);
+  }
+
+  @include m(info) {
+    @include button-variant($--button-info-font-color, $--button-info-background-color, $--button-info-border-color);
+  }
+
+
+
+  @include m(medium) {
+    @include button-size($--button-medium-padding-vertical, $--button-medium-padding-horizontal, $--button-medium-font-size, $--button-medium-border-radius);
+
+    @include when(circle) {
+      padding: $--button-medium-padding-vertical;
+    }
+  }
+
+  @include m(small) {
+    @include button-size($--button-small-padding-vertical, $--button-small-padding-horizontal, $--button-small-font-size, $--button-small-border-radius);
+
+    @include when(circle) {
+      padding: $--button-small-padding-vertical;
+    }
+  }
+
+  @include m(mini) {
+    @include button-size($--button-mini-padding-vertical, $--button-mini-padding-horizontal, $--button-mini-font-size, $--button-mini-border-radius);
+
+    @include when(circle) {
+      padding: $--button-mini-padding-vertical;
+    }
+  }
+
+}

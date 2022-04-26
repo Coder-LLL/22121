@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lzh-Button</title>
+</head>
+
+<div id="app">
+  <Lzh-btn type="default">default</Lzh-btn>
+  <Lzh-btn type="default" :disabled="true">default</Lzh-btn>
+  <Lzh-btn type="success">success</Lzh-btn>
+  <Lzh-btn type="primary">primary</Lzh-btn>
+  <Lzh-btn type="warning">warning</Lzh-btn>
+  <Lzh-btn type="danger">danger</Lzh-btn>
+  <Lzh-btn type="info">info</Lzh-btn>
+
+
+  <Lzh-btn type="primary">primary</Lzh-btn>
+  <Lzh-btn type="primary" circle>circle</Lzh-btn>
+  <Lzh-btn type="primary" round>round</Lzh-btn>
+
+
+  <Lzh-btn type="primary" size="medium">medium</Lzh-btn>
+  <Lzh-btn type="primary" size="small">small</Lzh-btn>
+  <Lzh-btn type="primary" size="mini">mini</Lzh-btn>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="module">
+  import LzhBtn from '../dist/es/index.js'
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello nextTick',
+        name: 'Vue.js',
+        title: 'Title'
+      },
+      components: {
+        LzhBtn
+      },
+      mounted() {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+@import './config.scss';
+
+
+/* BEM命名规范
+ -------------------------- */
+@mixin b($block) {
+  $B: $namespace+'-'+$block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+//修饰符混入
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: "";
+
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ','};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+// @mixin m($modifier) {
+//   $selector: &;
+//   $currentSelector: "";
+
+//   // 感觉 modifier 只有一个值，所以用不用 @each 效果一样 下面注释的这一行代码好像效果一样
+//   // $currentSelector: #{$currentSelector + & + $modifier-separator + $modifier + ","};
+
+//   // 注意 这里是在 mixin b从调用的这里 所以 & 这指的是 lzh-button 之类的 
+//   @each $unit in $modifier {
+//     $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ","};
+//   }
+
+//   @at-root {
+//     #{$currentSelector} {
+//       @content;
+//     }
+//   }
+// }
+
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
