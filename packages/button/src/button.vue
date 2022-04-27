@@ -17,6 +17,7 @@
     <!-- loading 和 icon只显示一个 loading不存在的情况下才判断有没有icon -->
     <Lzh-icon :class="icon" v-if="icon && !loading"></Lzh-icon>
     <!-- 默认插槽才放进来 -->
+
     <span v-if="$slots.default"><slot></slot></span>
   </button>
 </template>
