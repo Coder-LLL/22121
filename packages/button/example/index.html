@@ -25,6 +25,11 @@
   <Lzh-btn type="primary" size="medium">medium</Lzh-btn>
   <Lzh-btn type="primary" size="small">small</Lzh-btn>
   <Lzh-btn type="primary" size="mini">mini</Lzh-btn>
+
+  <Lzh-btn type="primary" loading>loading</Lzh-btn>
+  <Lzh-btn type="primary" icon="lzh-icon-info">lzh-icon-info</Lzh-btn>
+
+  <Lzh-btn type="default" @click="btnClick">点击事件</Lzh-btn>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script type="module">
@@ -41,6 +46,11 @@
       },
       mounted() {
 
+      },
+      methods:{
+        btnClick(){
+          console.log("click事件")
+        }
       }
     })
   </script>

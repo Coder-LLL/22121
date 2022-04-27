@@ -1,6 +1,7 @@
 <template>
   <button
     class="lzh-button"
+    @click="handleClick"
     :class="[
       type ? 'lzh-button--' + type : '',
       buttonSize ? 'lzh-button--' + buttonSize : '',
@@ -12,16 +13,20 @@
       },
     ]"
   >
+    <Lzh-icon class="lzh-icon-loading" v-if="loading">1</Lzh-icon>
+    <!-- loading 和 icon只显示一个 loading不存在的情况下才判断有没有icon -->
+    <Lzh-icon :class="icon" v-if="icon && !loading"></Lzh-icon>
+    <!-- 默认插槽才放进来 -->
     <span v-if="$slots.default"><slot></slot></span>
   </button>
 </template>
 
 <script>
-import iconVue from "../../icon/src/icon.vue";
+import LzhIcon from "../../icon/src/icon.vue";
 export default {
   name: "LzhButton",
   components: {
-    iconVue,
+    LzhIcon,
   },
   props: {
     // 按钮类型 primary success warning danger info
@@ -29,6 +34,11 @@ export default {
       type: String,
       default: "default",
     },
+    icon: {
+      type: String,
+      default: "",
+    },
+    loading: Boolean,
     size: String,
     plain: Boolean,
     disabled: Boolean,
@@ -51,7 +61,6 @@ export default {
   },
   methods: {
     handleClick(evt) {
-      console.log(111);
       this.$emit("click", evt);
     },
   },

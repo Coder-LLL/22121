@@ -8,13 +8,14 @@
 </head>
 
 <div id="app">
-  <i class="lzh-icon-edit"></i>
-  <icon class="lzh-icon-platform-eleme"></icon>
-  <icon class="lzh-icon-platform-eleme"></icon>
+  <i class="lzh-icon-platform-eleme"></i>
+  <lzh-icon class="lzh-icon-platform-eleme"></lzh-icon>
+  <lzh-icon class="lzh-icon-platform-eleme"></lzh-icon>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script type="module">
   import Icon from '../dist/es/index.js'
+  Vue.use(Icon)
     const vm = new Vue({
       el: '#app',
       data: {
@@ -22,9 +23,7 @@
         name: 'Vue.js',
         title: 'Title'
       },
-      components: {
-        Icon
-      },
+  
       mounted() {
 
       }
