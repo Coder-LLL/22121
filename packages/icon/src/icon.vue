@@ -1,5 +1,5 @@
 <template>
-  <i :class="'lzh-icon-' + name"></i>
+  <i :class="'lzh-icon-' + name" @click="iconClick"></i>
 </template>
 
 <script>
@@ -8,6 +8,11 @@ export default {
   props: {
     // 图标名称
     name: String,
+  },
+  methods: {
+    iconClick() {
+      this.$emit("click");
+    },
   },
 };
 </script>

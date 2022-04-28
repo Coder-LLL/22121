@@ -8,9 +8,52 @@
 </head>
 
 <div id="app">
+  <div>light</div>
+  <lzh-alert title="成功提示的文案" :showIcon="true">
+  </lzh-alert>
+
+  <lzh-alert type="error" title="成功提示的文案" :showIcon="true">
+  </lzh-alert>
+
+  <lzh-alert type="warning" title="成功提示的文案" :showIcon="true">
+  </lzh-alert>
+
+  <lzh-alert type="success" title="成功提示的文案" :showIcon="true">
+  </lzh-alert>
+
+
+  <div>dark</div>
+  <lzh-alert effect="dark" title="成功提示的文案" :showIcon="true">
+  </lzh-alert>
+
+  <lzh-alert effect="dark" type="error" title="成功提示的文案" :showIcon="true">
+  </lzh-alert>
+
+  <lzh-alert effect="dark" type="warning" title="成功提示的文案" :showIcon="true">
+  </lzh-alert>
+
+  <lzh-alert effect="dark" type="success" title="成功提示的文案" :showIcon="true">
+  </lzh-alert>
+
+  <div>center</div>
+  <lzh-alert center effect="dark" type="success" title="成功提示的文案" :showIcon="true">
+  </lzh-alert>
+
+  <div> 插槽 </div>
+  <lzh-alert effect="dark" type="success" title="成功提示的文案" :showIcon="true">
+    <template slot="title">
+      <p>success</p>
+    </template>
+    <template>
+      <p>默认插槽</p>
+    </template>
+  </lzh-alert>
+
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script type="module">
+  import lzhAlert from '../dist/es/index.js'
   const vm = new Vue({
       el: '#app',
       data: {
@@ -19,11 +62,13 @@
         title: 'Title'
       },
       components: {
+        lzhAlert
       },
       mounted() {
 
       }
     })
+    console.log(vm)
   </script>
 </body>
 
