@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LzhUI</title>
+</head>
+
+<div id="app">
+  <p>基础用法</p>
+  <lzh-link href="https://element.eleme.io" target="_blank">默认链接</lzh-link>
+  <lzh-link type="primary">主要链接</lzh-link>
+  <lzh-link type="success">成功链接</lzh-link>
+  <lzh-link type="warning">警告链接</lzh-link>
+  <lzh-link type="danger">危险链接</lzh-link>
+  <lzh-link type="info">信息链接</lzh-link>
+
+  <p>文字链接不可用状态。</p>
+  <lzh-link disabled>默认链接</lzh-link>
+  <lzh-link type="primary" disabled>主要链接</lzh-link>
+  <lzh-link type="success" disabled>成功链接</lzh-link>
+  <lzh-link type="warning" disabled>警告链接</lzh-link>
+  <lzh-link type="danger" disabled>危险链接</lzh-link>
+  <lzh-link type="info" disabled>信息链接</lzh-link>
+
+  <p>使用icon图标</p>
+  <lzh-link type="warning" icon="lzh-icon-user-solid">警告链接</lzh-link>
+  <lzh-link type="danger" icon="lzh-icon-s-tools">危险链接</lzh-link>
+  <lzh-link type="info" icon="lzh-icon-delete">信息链接</lzh-link>
+
+  <p>使用icon插槽 </p>
+  <lzh-link>查看<lzh-icon slot="icon" class="lzh-icon-view  lzh-icon--right"></lzh-icon>
+  </lzh-link>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="module">
+  import lzhLink from '../dist/es/index.js'
+  import lzhIcon from '../../icon/dist/es/index.js'
+  const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello nextTick',
+        name: 'Vue.js',
+        title: 'Title'
+      },
+      components: {
+        lzhLink,lzhIcon
+      },
+      mounted() {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LzhUI</title>
+  <style>
+    .lzh-badge {
+      margin-left: 40px;
+    }
+  </style>
+</head>
+
+<div id="app">
+  <div>基础用法</div>
+  <lzh-badge :value="100">
+    <lzh-button>评论</lzh-button>
+  </lzh-badge>
+  <lzh-badge type="primary" :value="100">
+    <lzh-button>评论</lzh-button>
+  </lzh-badge>
+  <lzh-badge type="warning" :value="100">
+    <lzh-button>评论</lzh-button>
+  </lzh-badge>
+
+  <div>最大值</div>
+  <lzh-badge :value="100" :max="99">
+    <lzh-button>评论</lzh-button>
+  </lzh-badge>
+  <lzh-badge type="primary" :value="100" :max="99">
+    <lzh-button>评论</lzh-button>
+  </lzh-badge>
+  <lzh-badge type="warning" :value="100" :max="99">
+    <lzh-button>评论</lzh-button>
+  </lzh-badge>
+
+  <div>自定义内容</div>
+  <lzh-badge value="new">
+    <lzh-button size="small">评论</lzh-button>
+  </lzh-badge>
+
+  <div>小红点</div>
+  <lzh-badge is-dot>
+    <lzh-button size="small">评论</lzh-button>
+  </lzh-badge>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="module">
+  import lzhBadge from '../dist/es/index.js'
+  import lzhButton from '../../button/dist/es/index.js'
+  const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello nextTick',
+        name: 'Vue.js',
+        title: 'Title'
+      },
+      components: {
+        lzhBadge,
+        lzhButton
+      },
+      mounted() {
+
+      }
+    })
+  </script>
+</body>
+
+</html>
