@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LzhUI</title>
+</head>
+
+<div id="app">
+  <div>基础用法</div>
+  <lzh-switch v-model="value" active-color="#13ce66" inactive-color="#ff4949">
+  </lzh-switch>
+
+  <div>通过 v-model 来实现value的传递</div>
+  <lzh-switch :width="100" v-model="value1">
+  </lzh-switch>
+
+  <div>通过 v:bind + v-on 来实现value的传递</div>
+  <lzh-switch :width="100" v-bind:value="value2" v-on:input="input" active-color="#13ce66" inactive-color="#ff4949">
+  </lzh-switch>
+
+
+  <div>通过ref拿到组件如何调用focus方法</div>
+  <lzh-switch ref="switchRef" :width="100" v-bind:value="value3" v-on:input="input" active-color="#13ce66"
+    inactive-color="#ff4949">
+  </lzh-switch>
+
+
+  <div>文字描述</div>
+  <lzh-switch v-model="value4" active-text="按月付费" inactive-text="按年付费">
+  </lzh-switch>
+  <lzh-switch style="display: block" v-model="value5" active-color="#13ce66" inactive-color="#ff4949" active-text="按月付费"
+    inactive-text="按年付费">
+  </lzh-switch>
+
+  <div>带图标</div>
+  <lzh-switch active-icon-class="lzh-icon-warning" inactive-icon-class="lzh-icon-warning-outline" v-model="value6">
+  </lzh-switch>
+
+  <div>禁用</div>
+  <lzh-switch active-icon-class="lzh-icon-warning" inactive-icon-class="lzh-icon-warning-outline" v-model="value7"
+    disabled>
+  </lzh-switch>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="module">
+  import LzhSwitch from '../dist/es/index.js'
+  const vm = new Vue({
+      el: '#app',
+      data: {
+        value: 888,
+        value1:true,
+        value2: true,
+        value3: true,
+        value4: true,
+        value5: true,
+        value6: true,
+        value7: true,
+        value8: true,
+      },
+      components: {
+        LzhSwitch
+      },
+      mounted() {
+        this.$refs.switchRef.focus()
+      },
+      methods:{
+
+        input(val){
+          this.value2 = val
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
